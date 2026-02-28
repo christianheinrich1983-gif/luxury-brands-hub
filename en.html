@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Brands Hub</title>
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:#0d1820;
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  padding:28px 16px;
+  text-align:center;
+}
+header h1{
+  margin:0 0 6px;
+  font-size:2.1rem;
+}
+header p{
+  margin:0 0 16px;
+  opacity:.8;
+}
+
+/* FILTER */
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.filters button{
+  background:#1e3342;
+  color:#fff;
+  border:none;
+  padding:9px 15px;
+  border-radius:999px;
+  font-size:.9rem;
+  cursor:pointer;
+}
+.filters button:hover{
+  background:#2c4c61;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  padding:18px;
+  max-width:1200px;
+  margin:auto;
+}
+@media(min-width:768px){ .grid{grid-template-columns:repeat(5,1fr);} }
+@media(min-width:1200px){ .grid{grid-template-columns:repeat(6,1fr);} }
+
+/* CARD */
+.card{
+  background:#152734;
+  border-radius:14px;
+  padding:12px 10px;
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  transition:.2s;
+}
+.card:hover{
+  background:#1f3b4d;
+  transform:translateY(-4px);
+}
+
+/* LOGO */
+.logo{
+  background:#ffffff;
+  border-radius:10px;
+  padding:10px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:8px;
+}
+.logo img{
+  width:48px;
+  height:48px;
+}
+
+.card span{
+  font-size:.82rem;
+  line-height:1.2;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:18px;
+  font-size:.75rem;
+  opacity:.6;
+}
+footer a{
+  color:#9ecfff;
+  text-decoration:none;
+}
+
+/* FALLBACK ICON */
+.fallback{
+  width:48px;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:14px;
+  color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LANGUAGE SWITCH -->
+<div style="position:absolute; top:16px; right:16px; font-size:.9rem;">
+  <a href="index.html" style="color:#9ecfff;">DE</a> | <strong>EN</strong>
+</div>
+
+<header>
+  <h1>Luxury Brands Hub</h1>
+  <p>Official websites – luxury watches, fashion & jewelry</p>
+
+  <!-- SEARCH -->
+  <input
+    type="text"
+    id="search"
+    placeholder="Search brand …"
+    style="
+      width:90%;
+      max-width:420px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:none;
+      margin:16px auto 18px;
+      display:block;
+      font-size:1rem;
+      outline:none;
+    "
+  >
+
+  <div class="filters">
+    <button data-filter="all">All</button>
+    <button data-filter="watch">Watches</button>
+    <button data-filter="fashion">Fashion</button>
+    <button data-filter="jewelry">Jewelry</button>
+  </div>
+</header>
+
+<section class="grid" id="grid"></section>
+
+<footer>
+© Luxury Brands Hub – independent public brand directory<br>
+<a href="impressum.html">Imprint</a> · 
+<a href="datenschutz.html">Privacy Policy</a>
+</footer>
+
+<script src="brands.js"></script>
+
+<script>
+const grid = document.getElementById("grid");
+const searchInput = document.getElementById("search");
+
+let activeFilter = "all";
+
+function render(){
+  const query = searchInput.value.toLowerCase();
+  grid.innerHTML = "";
+
+  brands.forEach(b=>{
+    const matchFilter = activeFilter === "all" || b.category === activeFilter;
+    const matchSearch = b.name.toLowerCase().includes(query);
+
+    if(matchFilter && matchSearch){
+      grid.innerHTML += `
+      <a class="card" href="${b.url}" target="_blank" rel="noopener">
+        <div class="logo">
+          <img src="https://cdn.simpleicons.org/${b.icon}/000000"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="fallback" style="display:none;">
+            ${b.name.split(' ').map(w => w[0]).join('').slice(0,3)}
+          </div>
+        </div>
+        <span>${b.name}</span>
+      </a>`;
+    }
+  });
+}
+
+render();
+
+document.querySelectorAll(".filters button").forEach(btn=>{
+  btn.onclick = () => {
+    activeFilter = btn.dataset.filter;
+    render();
+  };
+});
+
+searchInput.addEventListener("input", render);
+</script>
+
+</body>
+</html>
