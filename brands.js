@@ -50,6 +50,7 @@ const brands = [
 { name:"Bottega Veneta", category:"fashion", url:"https://www.bottegaveneta.com", icon:"bottegaveneta" },
 { name:"Burberry", category:"fashion", url:"https://www.burberry.com", icon:"burberry" },
 { name:"Celine", category:"fashion", url:"https://www.celine.com", icon:"celine" },
+{ name:"Chogan", category:"fashion", url:"https://www.chogangroupspa.com/referral/CHRC9E9A0/DE", icon:"chogan" },
 { name:"Dior", category:"fashion", url:"https://www.dior.com", icon:"dior" },
 { name:"Dolce & Gabbana", category:"fashion", url:"https://www.dolcegabbana.com", icon:"dolcegabbana" },
 { name:"Fendi", category:"fashion", url:"https://www.fendi.com", icon:"fendi" },
