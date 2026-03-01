@@ -61,6 +61,7 @@ const brands = [
 { name:"Moncler", category:"fashion", url:"https://www.moncler.com", icon:"moncler" },
 { name:"Nike", category:"fashion", url:"https://www.awin1.com/cread.php?awinmid=14366&awinaffid=1626309&ued=https%3A%2F%2Fwww.sportspar.de%2Fmarken%2Fnike", icon:"nike" },
 { name:"Prada", category:"fashion", url:"https://www.prada.com", icon:"prada" },
+{ name:"Puma", category:"fashion", url:"https://www.awin1.com/cread.php?awinmid=14366&awinaffid=1626309&ued=https%3A%2F%2Fwww.sportspar.de%2Fmarken%2Fpuma", icon:"puma" },
 { name:"Saint Laurent", category:"fashion", url:"https://www.ysl.com", icon:"saintlaurent" },
 { name:"Valentino", category:"fashion", url:"https://www.valentino.com", icon:"valentino" },
 { name:"Versace", category:"fashion", url:"https://www.versace.com", icon:"versace" },
